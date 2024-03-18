@@ -1,0 +1,13 @@
+#generate, #new, #done {
+    display: none;
+}
+
+#loading {
+    display: block;
+    width: 200px;
+    
+}
+
+#done img {
+    width: 200px;
+}

@@ -1,3 +1,6 @@
+# APP
+uploads/*
+
 # Logs
 logs
 *.log
