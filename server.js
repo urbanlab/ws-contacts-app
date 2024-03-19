@@ -6,6 +6,14 @@ import { JSONFilePreset } from 'lowdb/node'
 import _        from 'lodash'
 import fetch from 'node-fetch';
 import crypto from 'crypto';
+import dotenv from 'dotenv';
+dotenv.config();
+
+// Global variables
+const COG_API_URL = process.env.COG_API_URL || 'http://localhost:5000'
+const BACKEND_PORT = process.env.BACKEND_PORT || 4000
+const BACKEND_BASE_URL = process.env.BACKEND_BASE_URL || 'http://localhost:4000'
+
 
 // Path
 import path from 'path'
@@ -34,7 +42,7 @@ var requestAI = async function(reqid) {
         console.log(raw)
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        const response = await fetch('http://localhost:5000/predictions', {method: 'POST', headers: myHeaders, body: raw, redirect: "follow"})
+        const response = await fetch(`${COG_API_URL}/predictions`, {method: 'POST', headers: myHeaders, body: raw, redirect: "follow"})
         const data = await response.json();
         return data
     }
@@ -76,8 +84,8 @@ io.on('connection', (socket) =>
 // Express Server
 //
 
-server.listen(4000, function() {
-  console.log('listening on *:4000');
+server.listen(BACKEND_PORT, function() {
+  console.log(`listening on *:${BACKEND_PORT}`);
 });
 
 app.use(express.json({limit: '50mb'}));
@@ -120,8 +128,8 @@ app.post('/gen', function(req, res) {
   var reqid = 'req_'+Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
   var inreq = {
     "input": {
-      "image": "https://contacts.kxkm.net/"+filename,
-      "image_to_become": "https://contacts.kxkm.net/models/"+modelname+".png",
+      "image": BACKEND_BASE_URL+"/"+filename,
+      "image_to_become": BACKEND_BASE_URL+"/models/"+modelname+".png",
       "prompt": prompt,
       "negative_prompt": "",
       "number_of_images": 1,
@@ -135,6 +143,7 @@ app.post('/gen', function(req, res) {
       "disable_safety_checker": true
     }
   }
+  console.log(inreq)
   var request = {uuid: reqid, userid: data.userid, data: data, input: inreq, output: [], status: "pending"};
 
   // Save the request to DB

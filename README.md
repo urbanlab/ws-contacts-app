@@ -1,2 +1,9 @@
 # contacts-app
-test modif
+
+
+# Quick Start
+
+```bash
+docker-compose up
+```
+
