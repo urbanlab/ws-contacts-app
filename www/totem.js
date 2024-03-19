@@ -6,6 +6,8 @@ var socket = io();
 
 socket.on('hello', function() {
     socket.emit('outputs')
+    $('#mainapp').empty()
+    imagesList = []
 });
 
 socket.on('output', function(output) {
@@ -25,4 +27,4 @@ setInterval(function() {
     i = (i+1)
     imagesList[i % imagesList.length].show()
     console.log('show', imagesList[i % imagesList.length].attr('src'))
-}, 1000)
+}, 8000)
