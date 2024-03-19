@@ -15,23 +15,32 @@
         <h1>.::[Contacts]::.</h1>
     </div>
     <hr />
-    <div id="done">
-        Vos Avatars <br />
+    <div id="done" class="part">
+        Votre Avatar <br />
+        <button id="retryBtn">Réessayer</button>
     </div>
     <hr />
-    <div id="generate">
+    
+    <div id="progress" class="part">
         Génération en cours ... <br />
         <img id="loading" src="/static/img/loading.gif" alt="loading" />
         <div id="reqid"></div>
     </div>
     <hr />
-    <div id="new">
+    
+    <div id="error" class="part">
+        Erreur lors du traitement de la requête <br />
+        <div id="reqerr"></div>
+    </div>
+    <hr />
+    
+    <div id="new" class="part">
         <form id="form" action="/generate" method="post" enctype="multipart/form-data">
             <input type="hidden" id="userid" name="userid" required>
             Pseudo: <input type="text" id="nick"  name="nick"  placeholder="Pseudo" required><br /><br />
-            Animal <input type="range" id="hybrid" name="hybrid" min="0" max="10" value="5" required> Vegetal<br /><br />
-            Selfie <input type="file" id="selfie" name="selfie" capture="user" accept="image/jpeg" required><br /><br />
-            <input type="submit" id="goBtn" value="Generer">
+            Animal: <input type="range" id="hybrid" name="hybrid" min="0" max="10" value="5" required> Vegetal<br /><br />
+            Selfie: <div id="selfieContainer"><video autoplay="true" id="selfieElement" muted></video></div><br /><br />
+            <input type="button" id="goBtn" value="Generer">
         </form>
     </div>
     
