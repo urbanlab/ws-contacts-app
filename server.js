@@ -34,7 +34,7 @@ var requestAI = async function(reqid) {
         console.log(raw)
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        const response = await fetch('http://localhost:5000/predictions', {method: 'POST', headers: myHeaders, body: raw, redirect: "follow"})
+        const response = await fetch('https://cog.kxkm.net/predictions', {method: 'POST', headers: myHeaders, body: raw, redirect: "follow"})
         const data = await response.json();
         return data
     }
