@@ -66,6 +66,14 @@ io.on('connection', (socket) =>
     var request = db.data.requests.filter((req) => req.userid === userid)
     if (request) socket.emit('generate', request)
   })
+
+  // Get all outputs
+  socket.on('outputs', () => {
+    var outputs = fs.readdirSync('outputs')
+    for (var i=0; i<outputs.length; i++) {
+      socket.emit('output', "outputs/"+outputs[i])
+    }
+  })
   
   // Send initial HELLO trigger
   socket.emit('hello');
@@ -177,6 +185,9 @@ app.post('/gen', function(req, res) {
       db.write()
       console.log('done', reqid)
       io.to(request.userid).emit('done', request)
+      for (var i=0; i<request.output.length; i++) {
+        io.emit('output', request.output[i])
+      }
   })
 
   // Echo request 

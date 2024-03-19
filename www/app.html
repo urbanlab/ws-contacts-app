@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Contacts KXKM</title>
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/app.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -20,20 +20,20 @@
         <button id="retryBtn">Réessayer</button>
     </div>
     <hr />
-    
+
     <div id="progress" class="part">
         Génération en cours ... <br />
         <img id="loading" src="/static/img/loading.gif" alt="loading" />
         <div id="reqid"></div>
     </div>
     <hr />
-    
+
     <div id="error" class="part">
         Erreur lors du traitement de la requête <br />
         <div id="reqerr"></div>
     </div>
     <hr />
-    
+
     <div id="new" class="part">
         <form id="form" action="/generate" method="post" enctype="multipart/form-data">
             <input type="hidden" id="userid" name="userid" required>
