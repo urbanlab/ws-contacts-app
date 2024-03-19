@@ -1,6 +1,7 @@
 # APP
 uploads/*
-
+outputs/*
+database.json
 
 # Logs
 logs
