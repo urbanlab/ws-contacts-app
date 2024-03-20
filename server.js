@@ -7,6 +7,8 @@ import _        from 'lodash'
 import fetch from 'node-fetch';
 import crypto from 'crypto';
 
+const upload_folder = "https://localhost:4000" // https://contacts.kxkm.net
+
 // Path
 import path from 'path'
 import {fileURLToPath} from 'url';
@@ -128,7 +130,7 @@ app.post('/gen', function(req, res) {
   var reqid = 'req_'+Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
   var inreq = {
     "input": {
-      "image": "https://contacts.kxkm.net/"+filename,
+      "image": upload_folder+"/"+filename,
       "image_to_become": "https://contacts.kxkm.net/models/"+modelname+".png",
       "prompt": prompt,
       "negative_prompt": "",
@@ -204,7 +206,7 @@ app.get('/', function(req, res) {
 
 // Serve static files /static
 // app.use('/static', express.static('www'));
-app.use('/', express.static('www'));
+app.use('/static', express.static('www'));
 app.use('/uploads', express.static('uploads'));
 app.use('/models', express.static('models'));
 app.use('/outputs', express.static('outputs'));

@@ -3,12 +3,13 @@
 //
 var uuid = Cookies.get('userid') || Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 Cookies.set('userid', uuid, { expires: 3700 })
-$('#userid').val(uuid)
+// $('#userid').val(uuid)
 console.log(uuid)
 
 function generateInput() {
     let data = {
         name: USER.name,
+        userid: uuid,
         selfie: USER.selfie,
         prompts: {}
     }
@@ -46,6 +47,10 @@ function submitData() {
     })
 }
 
+PAGES.addCallback('submit', function() {
+    submitData()
+})
+
 // Socket.io
 //
 var socket = io();
@@ -55,8 +60,8 @@ socket.on('hello', function() {
 
 socket.on('nickname', function(nick) {
     if (!nick) return
-    $('#nick').val(nick)
-    $('#nick').attr('disabled', 'disabled')    
+    $('#pseudo-input').val(nick)
+    $('#pseudo-input').attr('disabled', 'disabled')    
 })
 
 socket.on('error', function(req, err) {
