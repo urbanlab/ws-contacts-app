@@ -213,6 +213,10 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/www/app.html');
 });
 
+app.get('/old', function(req, res) {
+  res.sendFile(__dirname + '/www/old/app.html');
+});
+
 // Serve static files /static
 // app.use('/static', express.static('www'));
 app.use('/static', express.static('www'));
