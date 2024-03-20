@@ -35,13 +35,13 @@ function startMediaStream() {
 
 const snapshotButton = document.getElementById("media-stream-snapshot");
 const reloadButton = document.getElementById("media-reload");
+const videoContainer = document.querySelector(".video-container");
 let snapState = 0;
 let dataURL_media;
 
 snapshotButton.addEventListener("click", function() {
-    
     switch (snapState) {
-        case 0: 
+        case 0:
             const canvas = document.createElement("canvas");
             canvas.width = vid.videoWidth;
             canvas.height = vid.videoHeight;
@@ -49,13 +49,18 @@ snapshotButton.addEventListener("click", function() {
             canvas.getContext("2d").drawImage(vid, 0, 0, canvas.width, canvas.height);
             dataURL_media = canvas.toDataURL("image/png");
 
-            vid.src = dataURL_media;
-            snapshotButton.textContent = "Valider"
+            vid.style.display = "none"; // hide the video element
+            const img = document.createElement("img");
+            img.style.width = "100%";
+            img.src = dataURL_media;
+            videoContainer.appendChild(img); // show the image with the data URL
+
+            snapshotButton.textContent = "Valider";
             reloadButton.style.visibility = "visible";
 
-            snapState=1;
+            snapState = 1;
             break;
-        case 1:         
+        case 1:
             USER.setSelfie(dataURL_media);
             PAGES.goto("anon");
             vid.srcObject.getTracks().forEach(track => track.stop());
@@ -65,6 +70,8 @@ snapshotButton.addEventListener("click", function() {
 
 reloadButton.addEventListener("click", function() {
     vid.srcObject.getTracks().forEach(track => track.stop());
+    vid.style.display = "block"; // show the video element
+    videoContainer.querySelector("img").remove(); // hide the image
     startMediaStream();
 });
 
