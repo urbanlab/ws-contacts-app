@@ -199,14 +199,12 @@ app.get('/totem', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/www/app.html');
+  res.sendFile(__dirname + '/www/');
 });
 
-
-
 // Serve static files /static
-app.use('/static', express.static('www'));
+// app.use('/static', express.static('www'));
+app.use('/', express.static('www'));
 app.use('/uploads', express.static('uploads'));
 app.use('/models', express.static('models'));
 app.use('/outputs', express.static('outputs'));
-
