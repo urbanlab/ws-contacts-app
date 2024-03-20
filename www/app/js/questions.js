@@ -121,12 +121,11 @@ anonymityMask.addEventListener("touchstart", function(event) {
 });
 
 document.getElementById("anonymity-submit").addEventListener("click", function() {
-    USER.addPrompt("anonimity", anonymitySlider.value);
+    USER.addPrompt("anon", map(anonymitySlider.value, 0, 100, 0.3, 0.6).toFixed(1) );
     PAGES.goto("poids_taille");
 });
 
 /*========== Poids et taille ==========*/
-
 
 const buddyContainer = document.getElementById("tallfat-container");
 const buddyResizable = document.getElementById("tallfat-buddy");
@@ -229,8 +228,9 @@ buddyTopLeft.addEventListener("touchstart", function(event) {
 });
 
 document.getElementById("tallfat-submit").addEventListener("click", function() {
-    USER.addPrompt("height", buddySliderTall.value);
-    USER.addPrompt("width", buddySliderWeight.value);
+    // USER.addPrompt("height", buddySliderTall.value);
+    
+    USER.addPrompt("poids", buddySliderWeight.value > 50 ? "gros" : "maigre");
     PAGES.goto("nature");
 });
 
@@ -289,7 +289,7 @@ replantButton.addEventListener("click", function() {
 });
 
 document.getElementById("nature-submit").addEventListener("click", function() {
-    USER.addPrompt("nature", plantData.current);
+    // USER.addPrompt("nature", plantData.current);
     PAGES.goto("respect_regles");
 });
 
@@ -338,7 +338,7 @@ regleBal_left.addEventListener("touchmove", function(event) {
 });
 
 document.getElementById("respect-regles-submit").addEventListener("click", function() {
-    USER.addPrompt("respect", regleSlider.value);
+    // USER.addPrompt("respect", regleSlider.value);
     PAGES.goto("choix_hybride");
 });
 
@@ -396,7 +396,17 @@ function createCadenasses(count) {
 createCadenasses(6);
 
 document.getElementById("parano-submit").addEventListener("click", function() {
-    USER.addPrompt("paranoia", paranoSlider.value);
+    let val = "faible";
+    
+    if ((paranoSlider.value/100)*3 < 1) {
+        val = "faible";
+    } else if ((paranoSlider.value/100)*3 < 2.5) {
+        val = "classique";
+    } else if ((paranoSlider.value/100)*3 < 3) {
+        val = "eleve";
+    }
+
+    USER.addPrompt("paranoia", val);
     PAGES.random("visage", "scarifications", "pilosite")
 });
 
@@ -422,7 +432,7 @@ document.getElementById("visage-submit").addEventListener("click", function() {
         parts.push(part.dataset.name);
     });
 
-    USER.addPrompt("remove-face-parts", parts);
+    USER.addPrompt("visage", parts.length > 0 ? "oui" : "non");
     PAGES.goto("submit");
 });
 
@@ -455,7 +465,7 @@ fetch(pathBodySurgery)
 });
 
 document.getElementById("scarifications-submit").addEventListener("click", function() {
-    USER.addPrompt("scarifications", surgeryCount);
+    USER.addPrompt("scarifications", surgeryCount > 0 ? "oui" : "non");
     PAGES.goto("submit");
 });
 
@@ -483,7 +493,7 @@ furSlider.addEventListener("input", function() {
 });
 
 document.getElementById("pilosite-submit").addEventListener("click", function() {
-    USER.addPrompt("pilosite", parseInt(furSlider.value) / 10);
+    USER.addPrompt("pilosite", parseInt(furSlider.value) / 10 > 25 ? "oui" : "non");
     PAGES.goto("submit");
 });
 
@@ -535,11 +545,19 @@ sportButton.addEventListener("click", function() {
 });
 
 document.getElementById("violence-submit").addEventListener("click", function() {
-    USER.addPrompt("violence", sportCount);
+    let val = "faible";
+    
+    if (sportCount / 10 < 4) {
+        val = "faible";
+    } else if (sportCount / 10 < 7) {
+        val = "moyen";
+    } else if (sportCount / 10 < 10) {
+        val = "eleve";
+    }
+
+    USER.addPrompt("violence", val);
     PAGES.random("intellect", "viande", "drogue")
 });
-
-/*========== Intellect ==========*/
 
 
 /*========== Viande ==========*/
@@ -632,7 +650,7 @@ PAGES.addCallback("viande", () => {
 });
 
 document.getElementById("viande-submit").addEventListener("click", function() {
-    USER.addPrompt("viande", cowSlider.value);
+    USER.addPrompt("viande", cowSlider.value > 50 ? "oui" : "non");
     PAGES.goto("submit");
 });
 
@@ -705,7 +723,7 @@ PAGES.addCallback("drogue", () => {
 });
 
 document.getElementById("drug-submit").addEventListener("click", function() {
-    USER.addPrompt("conso drogue", map(pupilAmount, 1, 2.5, 0, 100));
+    // ("conso drogue", map(pupilAmount, 1, 2.5, 0, 100));
     PAGES.goto("submit");
 });
 
@@ -737,7 +755,6 @@ pumpHandle.addEventListener("touchmove", function(event) {
 
     if (pumpPrevY < y) {
         brainSize += (y - pumpPrevY) / 60 * 10;
-        // console.log(brainSize)
         updateBrain();
     }
 
@@ -754,6 +771,6 @@ PAGES.addCallback("intellect", () => {
 });
 
 document.getElementById("intellect-submit").addEventListener("click", function() {
-    USER.addPrompt("intellect", brainSlider.value);
+    USER.addPrompt("intelligence", brainSlider.value > 50 ? "eleve" : "faible");
     PAGES.goto("submit");
 });

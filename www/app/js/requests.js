@@ -6,28 +6,24 @@ Cookies.set('userid', uuid, { expires: 3700 })
 $('#userid').val(uuid)
 console.log(uuid)
 
+function generateInput() {
+    let data = {
+        name: USER.name,
+        selfie: USER.selfie,
+        prompts: {}
+    }
+    USER.prompts.forEach((prompt, index) => {
+        data.prompts[prompt.name] = prompt.value;
+    });
+    return data;
+}
+
 // Generate BUTTON
 //
 
-$('#goBtn').click(function() 
-{
-    // Capture image from webcam as base64
-    var canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height); 
-    var dataURL = canvas.toDataURL('image/jpg');
+function submitData() {
 
-    // Build the data
-    var data = {
-        userid: uuid,
-        nick: $('#nick').val(),
-        hybrid: $('#hybrid').val(),
-        selfie:  dataURL
-    }
-
-    // Hide/Show Parts
-    $('.part').hide()
+    var data = generateInput();
 
     // Fetch POST /gen => Create pending request on server 
     fetch('/gen', {
@@ -43,13 +39,12 @@ $('#goBtn').click(function()
         $('#progress').show()
     })
     .catch(error => {
-
         // Request creation error..
         console.error('== Request error:', error)
         $('#reqerr').html(error)
         $('#error').show()
     })
-})
+}
 
 // Socket.io
 //
@@ -81,28 +76,6 @@ socket.on('done', function(req) {
     // $('<div class="request">').html(JSON.stringify(req)).appendTo('#done')
 })
 
-
 socket.on('reload', function() {
     location.reload()
 })
-
-
-// Retry button
-//
-$('#retryBtn').click(function() {
-    location.reload()
-})
-
-
-// Webcam
-//
-var video = document.querySelector("#selfieElement");
-if (navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function (stream) {
-      video.srcObject = stream;
-    })
-    .catch(function (err0r) {
-      console.log("Something went wrong!");
-    });
-}
