@@ -15,6 +15,8 @@ const BACKEND_PORT = process.env.BACKEND_PORT || 4000
 const BACKEND_BASE_URL = process.env.BACKEND_BASE_URL || 'http://localhost:4000'
 
 
+const upload_folder = "https://localhost:4000" // https://contacts.kxkm.net
+
 // Path
 import path from 'path'
 import {fileURLToPath} from 'url';
@@ -73,6 +75,14 @@ io.on('connection', (socket) =>
     // check if a request is pending
     var request = db.data.requests.filter((req) => req.userid === userid)
     if (request) socket.emit('generate', request)
+  })
+
+  // Get all outputs
+  socket.on('outputs', () => {
+    var outputs = fs.readdirSync('outputs')
+    for (var i=0; i<outputs.length; i++) {
+      socket.emit('output', "outputs/"+outputs[i])
+    }
   })
   
   // Send initial HELLO trigger
@@ -186,6 +196,9 @@ app.post('/gen', function(req, res) {
       db.write()
       console.log('done', reqid)
       io.to(request.userid).emit('done', request)
+      for (var i=0; i<request.output.length; i++) {
+        io.emit('output', request.output[i])
+      }
   })
 
   // Echo request 
@@ -200,11 +213,9 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/www/app.html');
 });
 
-
-
 // Serve static files /static
+// app.use('/static', express.static('www'));
 app.use('/static', express.static('www'));
 app.use('/uploads', express.static('uploads'));
 app.use('/models', express.static('models'));
 app.use('/outputs', express.static('outputs'));
-
