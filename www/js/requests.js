@@ -22,6 +22,18 @@ function generateInput() {
 // Generate BUTTON
 //
 
+const avatarContainer = document.getElementById('avatar-container');
+const avatarLabel = document.getElementById('avatar-label');
+function showImage(link) {
+    avatarContainer.innerHTML = '';
+    const img = document.createElement('img');
+    img.onload = function() {
+        avatarLabel.innerText = "Voici ton avatar !"
+    }
+    img.src = link;
+    avatarContainer.appendChild(img);
+}
+
 function submitData() {
 
     var data = generateInput();
@@ -75,9 +87,12 @@ socket.on('error', function(req, err) {
 
 socket.on('done', function(req) {
     console.log('done', req)
+    /*
     $('.part').hide()
     $('#done').show()
     $('<img>').attr('src', req.output).appendTo('#done')
+    */
+    showImage(req.output)
     // $('<div class="request">').html(JSON.stringify(req)).appendTo('#done')
 })
 
