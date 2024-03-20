@@ -260,7 +260,7 @@ function createPlant(count) {
 
         plant.classList.add("plant");
         
-        plant.style.backgroundImage = `url(./assets/flowers/${Math.floor(Math.random() * plantAmount)}.png)`;
+        plant.style.backgroundImage = `url(/static/assets/flowers/${Math.floor(Math.random() * plantAmount)}.png)`;
         
         // plant.textContent = trees[Math.floor(Math.random() * trees.length)];
 
@@ -412,7 +412,7 @@ document.getElementById("parano-submit").addEventListener("click", function() {
 
 /*========== Parties du visage ==========*/
 
-const pathBodyParts = "./assets/face_parts_mask.svg";
+const pathBodyParts = "/static/assets/face_parts_mask.svg";
 fetch(pathBodyParts)
 .then(response => response.text())
 .then(svg => {
@@ -438,7 +438,7 @@ document.getElementById("visage-submit").addEventListener("click", function() {
 
 /*========== Scarifications ==========*/
 
-const pathBodySurgery = "./assets/body-full-hitbox.svg";
+const pathBodySurgery = "/static/assets/body-full-hitbox.svg";
 let surgeryCount = 0;
 
 fetch(pathBodySurgery)
@@ -534,7 +534,7 @@ sportButton.addEventListener("click", function() {
             break;
         case 1:
 
-            sportButton.style.backgroundImage = "url(./assets/duck_donk.png)";
+            sportButton.style.backgroundImage = "url(/static/assets/duck_donk.png)";
             setTimeout(() => {
                 sportButton.style.backgroundImage = "";
             }, 70);
@@ -646,7 +646,7 @@ PAGES.addCallback("viande", () => {
         cowData.default = getOpaquePixels();
     }
 
-    cowToMask.src = "./assets/cow.png";
+    cowToMask.src = "/static/assets/cow.png";
 });
 
 document.getElementById("viande-submit").addEventListener("click", function() {

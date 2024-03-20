@@ -1,12 +1,12 @@
-@import '../fonts/font.css';
-@import './normalize.css';
-@import './forms.css';
+@import '/static/fonts/font.css';
+@import '/static/css/normalize.css';
+@import '/static/css/forms.css';
 
 /*========== CSS Configuration ==========*/
 
 :root {
     /* Main variables*/
-    --background-image: url("../imgs/bg.jpg");
+    --background-image: url(/static/imgs/bg.jpg);
     --font-color: white;
 
     /* Button variables */

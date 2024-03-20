@@ -201,7 +201,7 @@ app.get('/totem', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/www/');
+  res.sendFile(__dirname + '/www/app.html');
 });
 
 // Serve static files /static

@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CONTACT</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 
     <!-- Used for requesting the node server to generate images -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -44,8 +44,8 @@
         <h2>A quel point souhaites-tu rester anonyme ?</h2>
 
         <div id="anonymity-container">
-            <img src="./assets/mask_man.png" alt="face" class="center" draggable="false">
-            <img src="./assets/mask.png" alt="face mask" id="anonymity-mask" draggable="false">
+            <img src="/static/assets/mask_man.png" alt="face" class="center" draggable="false">
+            <img src="/static/assets/mask.png" alt="face mask" id="anonymity-mask" draggable="false">
         </div>
         <input type="range" min="0" max="100" value="0" step="1" id="anonymity-slider" disabled>
         <button id="anonymity-submit">Suivant</button>
@@ -103,14 +103,14 @@
         <div class="choice-container">
             <div id="hybride-animal">
                 <span>Animal</span>
-                <img src="./assets/choix_animal.png" alt="Justice yes">
-                <img src="./assets/hand_left.png" class="hand" alt="hand left" style="animation-delay: -0.5s;">
+                <img src="/static/assets/choix_animal.png" alt="Justice yes">
+                <img src="/static/assets/hand_left.png" class="hand" alt="hand left" style="animation-delay: -0.5s;">
             </div>
 
             <div id="hybride-vegetal">
                 <span>Végétal</span>
-                <img src="./assets/choix_plante.png" alt="Justice no">
-                <img src="./assets/hand_right.png" class="hand" alt="hand right">
+                <img src="/static/assets/choix_plante.png" alt="Justice no">
+                <img src="/static/assets/hand_right.png" class="hand" alt="hand right">
             </div>
 
         </div>
@@ -133,7 +133,7 @@
         <h2>Souhaites-tu retirer des parties du visage ?</h2>
 
         <div id="head-container">
-            <img src="./assets/face_parts.png" alt="face parts">
+            <img src="/static/assets/face_parts.png" alt="face parts">
         </div>
 
         <button id="visage-submit">Suivant</button>
@@ -142,7 +142,7 @@
     <div class="page" id="surgery-body-container" data-page-id="scarifications">
         <h2>As-tu des scarifications ?</h2>
         <div id="surgery-body">
-            <img src="./assets/body-full.png" alt="">
+            <img src="/static/assets/body-full.png" alt="">
         </div>
         <button id="scarifications-submit">Suivant</button>
     </div>
@@ -182,8 +182,8 @@
         <h2>Consommes-tu beaucoup de viande ?</h2>
         <button id="cow-reset">Reset</button>
         <div id="cow-container">
-            <img src="assets/cow_skeleton.png" alt="cow skeleton">
-            <img src="assets/cow.png" alt="cow" id="cow-to-mask" style="display: none;">
+            <img src="/static/assets/cow_skeleton.png" alt="cow skeleton">
+            <img src="/static/assets/cow.png" alt="cow" id="cow-to-mask" style="display: none;">
             <canvas id="cow-canvas"></canvas>
         </div>
         <input type="range" min="0" max="100" value="0" step="1" id="viande-slider" disabled>
@@ -195,10 +195,10 @@
         <button id="drug-reset">Reset</button>
         <div id="drug-container">
 
-            <img id="drug-seringe" src="./assets/seringe.png" alt="seringe" draggable="false">
+            <img id="drug-seringe" src="/static/assets/seringe.png" alt="seringe" draggable="false">
 
-            <img id="drug-man" src="./assets/man.png" alt="drug man">
-            <img id="drug-pupil" src="./assets/pupil.svg" alt="drug man pupil">
+            <img id="drug-man" src="/static/assets/man.png" alt="drug man">
+            <img id="drug-pupil" src="/static/assets/pupil.svg" alt="drug man pupil">
             
         </div>
         
@@ -213,17 +213,17 @@
     </div>
 
     <!-- Libs -->
-    <script src="./js/libs/perlin.js"></script>
+    <script src="/static/js/libs/perlin.js"></script>
 
     <!-- Scripts -->
-    <script src="./js/util.js"></script>
-    <script src="./js/graphics.js"></script>
-    <script src="./js/slider.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/questions.js"></script>
+    <script src="/static/js/util.js"></script>
+    <script src="/static/js/graphics.js"></script>
+    <script src="/static/js/slider.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/questions.js"></script>
 
     <!-- Image generation -->
-    <script src="./js/requests.js"></script>
+    <script src="/static/js/requests.js"></script>
         
     <script> PAGES.goto("home"); // Debug purpose </script>
 

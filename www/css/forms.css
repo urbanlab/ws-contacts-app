@@ -73,7 +73,7 @@
     min-height: 40px;
     max-width: 100%;
     max-height: 100%;
-    background-image: url(../assets/body-full.png);
+    background-image: url(/static/assets/body-full.png);
     background-size: 100% 100%;
 }
 
@@ -82,7 +82,7 @@
     width: 38px;
     height: 38px;
     background-color: white;
-    background-image: url(../assets/move.png);
+    background-image: url(/static/assets/move.png);
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 8px;
@@ -148,7 +148,7 @@
     height: 100%;
     position: relative;
     
-    background-image: url(../assets/socle.png);
+    background-image: url(/static/assets/socle.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -161,7 +161,7 @@
     top: 0;
     left: 50%;
     
-    background-image: url(../assets/rode.png);
+    background-image: url(/static/assets/rode.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -185,13 +185,13 @@
 .bal1 {
     left: 0;
     transform: translateX(-50%) rotate(-20deg);
-    background-image: url(../assets/bal1.png);
+    background-image: url(/static/assets/bal1.png);
 }
 
 .bal2 {
     right: 0;
     transform: translateX(50%) rotate(-20deg);
-    background-image: url(../assets/bal2.png);
+    background-image: url(/static/assets/bal2.png);
 }
 
 /*========== choix animal ou plante ==========*/
@@ -239,7 +239,7 @@
 /*========== Paranoïa ==========*/
 
 #parano-door {
-    background-image: url(../assets/door.png);
+    background-image: url(/static/assets/door.png);
     background-size: 100% 100%;
     aspect-ratio: 100 / 194;
     display: flex;
@@ -340,7 +340,7 @@
 
     transform: translate(-50%, -50%);
 
-    background-image: url(../assets/scar_knife.png);
+    background-image: url(/static/assets/scar_knife.png);
 }
 
 /*========== Pilosité ==========*/
@@ -418,7 +418,7 @@
     padding: 8px;
     text-align: center;
 
-    background-image: url(../assets/duck.png);
+    background-image: url(/static/assets/duck.png);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -497,7 +497,7 @@
     height: 128px;
     width: 64px;
 
-    background-image: url(../assets/pump_base.png);
+    background-image: url(/static/assets/pump_base.png);
     background-size: 100% 100%;
     position: relative;
     z-index: 1;
@@ -511,7 +511,7 @@
     z-index: 0;
     top: 0;
 
-    background-image: url(../assets/pump_handle.png);
+    background-image: url(/static/assets/pump_handle.png);
     background-size: 100% 100%;
 }
 
@@ -532,6 +532,6 @@
     max-height: 100%;
     aspect-ratio: 1/1;
 
-    background-image: url(../assets/brain.png);
+    background-image: url(/static/assets/brain.png);
     background-size: 100% 100%;
 }
