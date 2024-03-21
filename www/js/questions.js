@@ -17,18 +17,12 @@ PAGES.addCallback("pseudo", () => {
 
 const vid = document.getElementById("media-stream");
 
-function exitFullscreen() {
-    if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-    }
-    else if (document.exitFullscreen) {
+
+function handleFullscreenChange(event) {
+    var fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+    if (!fullscreenElement) {
         document.exitFullscreen();
-    }
-    else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-    }
-    else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
+        document.webkitExitFullscreen();
     }
 }
 
@@ -42,13 +36,7 @@ function startMediaStream() {
         vid.play();
         snapshotButton.textContent = "Capturer";
         snapState = 0;
-
-        vid.addEventListener('webkitfullscreenchange', (event) => {
-            if (document.webkitIsFullScreen) {
-                exitFullscreen();
-            }
-        });
-
+        vid.addEventListener('webkitfullscreenchange', handleFullscreenChange);
     })
     .catch((err) => {
         console.error(err);
