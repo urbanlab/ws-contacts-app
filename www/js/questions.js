@@ -667,7 +667,7 @@ PAGES.addCallback("viande", () => {
 });
 
 document.getElementById("viande-submit").addEventListener("click", function() {
-    USER.addPrompt("viande", cowSlider.value > 50 ? "oui" : "non");
+    USER.addPrompt("viande", cowSlider.value > 50 ? "eleve" : "faible");
     PAGES.goto("submit");
 });
 
