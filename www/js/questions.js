@@ -477,7 +477,7 @@ fetch(pathBodySurgery)
 });
 
 document.getElementById("scarifications-submit").addEventListener("click", function() {
-    USER.addPrompt("scarifications", surgeryCount > 0 ? "oui" : "non");
+    USER.addPrompt("scarifications", surgeryCount > 0 ? "non" : "oui");
     PAGES.goto("submit");
 });
 
