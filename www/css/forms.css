@@ -367,31 +367,32 @@
 }
 
 #slider-fur {
-    height: 8px;
+    margin-top: 16px;
+    height: 16px;
     cursor: pointer;
     background-color: white;
 }
 
 #slider-fur::-webkit-slider-thumb {
     appearance: none;
-    width: 16px;
-    height: 16px;
+    width: 32px;
+    height: 32px;
     background-color: lightgreen;
     border: 2px solid black;
     border-radius: 4px;
 }
 
 #slider-fur::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
+    width: 32px;
+    height: 32px;
     background-color: lightgreen;
     border: 2px solid black;
     border-radius: 4px;
 }
 
 #slider-fur::-ms-thumb {
-    width: 16px;
-    height: 16px;
+    width: 32px;
+    height: 32px;
     background-color: lightgreen;
     border: 2px solid black;
     border-radius: 4px;
