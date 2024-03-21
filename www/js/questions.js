@@ -563,7 +563,7 @@ document.getElementById("violence-submit").addEventListener("click", function() 
         val = "faible";
     } else if (sportCount / 10 < 7) {
         val = "classique";
-    } else if (sportCount / 10 < 10) {
+    } else {
         val = "eleve";
     }
 
