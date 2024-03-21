@@ -414,7 +414,10 @@ document.getElementById("parano-submit").addEventListener("click", function() {
     }
 
     USER.addPrompt("paranoia", val);
-    PAGES.random("visage", "scarifications", "pilosite")
+
+    if (val=="faible") PAGES.goto("visage");
+    if (val=="classique") PAGES.goto("scarifications");
+    if (val=="eleve") PAGES.goto("pilosite");
 });
 
 /*========== Parties du visage ==========*/
@@ -557,13 +560,18 @@ document.getElementById("violence-submit").addEventListener("click", function() 
     if (sportCount / 10 < 4) {
         val = "faible";
     } else if (sportCount / 10 < 7) {
-        val = "moyen";
+        val = "classique";
     } else if (sportCount / 10 < 10) {
         val = "eleve";
     }
 
     USER.addPrompt("violence", val);
-    PAGES.random("intellect", "viande", "drogue")
+    
+    if (val=="faible") PAGES.goto("intellect");
+    if (val=="classique") PAGES.goto("viande");
+    if (val=="eleve") PAGES.goto("scarifications");
+
+    // PAGES.random("intellect", "viande", "drogue")
 });
 
 
