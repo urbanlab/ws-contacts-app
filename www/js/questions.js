@@ -17,16 +17,38 @@ PAGES.addCallback("pseudo", () => {
 
 const vid = document.getElementById("media-stream");
 
+function exitFullscreen() {
+    if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+    else if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+    else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    }
+    else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
+}
+
 function startMediaStream() {
     snapState = 3;
     reloadButton.style.visibility = "hidden";
     snapshotButton.textContent = "Chargement...";
-    navigator.mediaDevices.getUserMedia({ video: true })
+    navigator.mediaDevices.getUserMedia({ video: { width: { ideal: 480 }, height: { ideal: 480 } } })
     .then((stream) => {
         vid.srcObject = stream;
         vid.play();
         snapshotButton.textContent = "Capturer";
         snapState = 0;
+
+        vid.addEventListener('webkitfullscreenchange', (event) => {
+            if (document.webkitIsFullScreen) {
+                exitFullscreen();
+            }
+        });
+
     })
     .catch((err) => {
         console.error(err);
