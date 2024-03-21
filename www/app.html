@@ -42,7 +42,7 @@
 
     <div class="page" data-page-id="anon">
         <h2>A quel point souhaites-tu rester anonyme ?</h2>
-
+        <i>Faites glisser le masque sur le visage</i>
         <div id="anonymity-container">
             <img src="/static/assets/mask_man.png" alt="face" class="center" draggable="false">
             <img src="/static/assets/mask.png" alt="face mask" id="anonymity-mask" draggable="false">
@@ -53,6 +53,7 @@
 
     <div class="page" data-page-id="poids_taille">
         <h2>Quel est ton poids & ta taille ?</h2>
+        <i>Bougez les ancres pour modifier votre taille et poids</i>
         <div id="tallfat-container">
             <div id="tallfat-buddy">
                 <div id="resize-topleft" class="resizable-point"></div>
@@ -75,6 +76,7 @@
 
     <div class="page" data-page-id="nature">
         <h2>Quel est ton désir de détruire la nature ?</h2>
+        <i>Appuyez sur les plantes pour en retirer</i>
         <button id="replant-button">Replanter de la verdure</button>
         <div id="nature-container"></div>
         <input type="range" min="0" max="50" value="0" step="1" id="slider-forest" disabled>
@@ -83,7 +85,7 @@
 
     <div class="page" data-page-id="respect_regles">
         <h2>Respectes-tu souvent les règles ?</h2>
-        
+        <i>Déplacez les balances pour peser vos choix</i>
         <div class="balance-container">
             <div class="socle">
                 <div class="rode">
@@ -99,7 +101,7 @@
 
     <div class="page" data-page-id="choix_hybride">
         <h2>Choisis ton camp</h2>
-
+        <i>Appuyez sur la tribu que vous voulez choisir</i>
         <div class="choice-container">
             <div id="hybride-animal">
                 <span>Animal</span>
@@ -119,6 +121,7 @@
     <!-- Questions ROUTE VEGETAL -->
 
     <div class="page" data-page-id="paranoia">
+        <i>Fermez ou ouvrez les cadenas en appuyant dessus</i>
         <h2>Es-tu paranoïaque ?</h2>
         <div id="parano-door">
             <div id="parano-lockers">
@@ -131,7 +134,7 @@
 
     <div class="page" data-page-id="visage">
         <h2>Souhaites-tu retirer des parties du visage ?</h2>
-
+        <i>Appuyez sur les parties que vous souhaitez retirer</i>
         <div id="head-container">
             <img src="/static/assets/face_parts.png" alt="face parts">
         </div>
@@ -141,6 +144,7 @@
     
     <div class="page" id="surgery-body-container" data-page-id="scarifications">
         <h2>As-tu des scarifications ?</h2>
+        <i>Appuyez là ou voulez rajouter une scarification.</i>
         <div id="surgery-body">
             <img src="/static/assets/body-full.png" alt="">
         </div>
@@ -150,6 +154,7 @@
     <div class="page" data-page-id="pilosite">
         <canvas id="cnv-fur"></canvas>
         <h2>Quel est votre niveau de pilosité ?</h2>
+        <i>Déplacez le curseur coulissant</i>
         <div class="pilosite-slider-container">
             <input type="range" min="0" max="1000" value="0" step="1" id="slider-fur">
         </div>
@@ -166,6 +171,7 @@
 
     <div class="page" data-page-id="intellect">
         <h2>Es-tu intelligent.e ?</h2>
+        <i>Déplacez de haut en bas la poignée de la pompe</i>
         <button id="intellect-reset">Dégonfler</button>
         <div class="pump-container">
             <div id="pump-handle"></div>
@@ -180,6 +186,7 @@
 
     <div class="page" data-page-id="viande">
         <h2>Consommes-tu beaucoup de viande ?</h2>
+        <i>Grattez la vache pour en consommer sa chaire.</i>
         <button id="cow-reset">Reset</button>
         <div id="cow-container">
             <img src="/static/assets/cow_skeleton.png" alt="cow skeleton">
@@ -192,6 +199,7 @@
 
     <div class="page" data-page-id="drogue">
         <h2>Consommes-tu des stupéfiants ?</h2>
+        <i>Déplacez la seringue sur le bras de l'humain</i>
         <button id="drug-reset">Reset</button>
         <div id="drug-container">
 
