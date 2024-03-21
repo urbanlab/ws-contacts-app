@@ -128,7 +128,7 @@ anonymityMask.addEventListener("touchstart", function(event) {
 });
 
 document.getElementById("anonymity-submit").addEventListener("click", function() {
-    USER.addPrompt("anon", map(anonymitySlider.value, 0, 100, 0.3, 0.6).toFixed(1) );
+    USER.addPrompt("anon", 0.6 - map(anonymitySlider.value, 0, 100, 0.3, 0.6).toFixed(1) );
     PAGES.goto("poids_taille");
 });
 
@@ -404,12 +404,14 @@ createCadenasses(6);
 
 document.getElementById("parano-submit").addEventListener("click", function() {
     let val = "faible";
-    
-    if ((paranoSlider.value/100)*3 < 1) {
+    let sliderValue = parseInt(paranoSlider.value);
+
+
+    if ((sliderValue/100)*3 < 1) {
         val = "faible";
-    } else if ((paranoSlider.value/100)*3 < 2.5) {
+    } else if ((sliderValue/100)*3 < 2.5) {
         val = "classique";
-    } else if ((paranoSlider.value/100)*3 < 3) {
+    } else if ((sliderValue/100)*3 < 3.5) {
         val = "eleve";
     }
 
@@ -561,12 +563,12 @@ document.getElementById("violence-submit").addEventListener("click", function() 
         val = "faible";
     } else if (sportCount / 10 < 7) {
         val = "classique";
-    } else if (sportCount / 10 < 10) {
+    } else {
         val = "eleve";
     }
 
     USER.addPrompt("violence", val);
-    
+
     if (val=="faible") PAGES.goto("intellect");
     if (val=="classique") PAGES.goto("viande");
     if (val=="eleve") PAGES.goto("scarifications");
