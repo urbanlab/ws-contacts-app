@@ -4,7 +4,7 @@
 ## 🗒 Prérequis
 
 **🔨 Hardware**
-- Minimum une RTX 3090, 24 GB VRAM et 16 GB RAM 
+- Minimum une RTX 3090, 24 GB VRAM et 16 GB RAM - 15 GB de SSD
 - Smartphone
 - Ecran 
 
@@ -14,8 +14,24 @@
   
 # 🚀 Démarrage rapide
 
+Copier le fichier `.env.example` en `.env` et remplir les variables d'environnement si nécessaire.
+
 ```bash
 docker-compose up
 ```
 
+Le front est accessible à l'adresse `http://localhost:4000`.
+L'API est accessible à l'adresse `http://localhost:5000`.
+
 ## 🚴 Utilisation
+
+Ce connecter a l'adresse `http://localhost:4000` pour accéder à l'application.
+
+Il vous sera demandé de remplir un forumlaire et de prendre un photo de votre visage.
+
+A l'issue de la soumission du formulaire, il vous faudrat attentdre entre 15-30 seconde pour que l'application vous affiche votre avatar basé sur votre photo et les informations que vous avez renseigné.
+
+## ❤️ Contributeurices
+[maigre](https://github.com/maigre) 
+
+[Yassin Siouda](https://yassin.siouda.com/)
